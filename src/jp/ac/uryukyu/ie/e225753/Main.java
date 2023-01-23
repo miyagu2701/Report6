@@ -1,31 +1,25 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        List<Card> card_list = new ArrayList<Card>();
-        for (int x = 1; x < 14; x++) {
-            Card a = new Card(x, "♠");
-            card_list.add(a);
-        }
-        for (int x = 1; x < 14; x++) {
-            Card a = new Card(x, "♦");
-            card_list.add(a);
-        }
-        for (int x = 1; x < 14; x++) {
-            Card a = new Card(x, "♣");
-            card_list.add(a);
-        }
-        for (int x = 1; x < 14; x++) {
-            Card a = new Card(x, "❤");
-            card_list.add(a);
-        }
+        Deck deck = new Deck();
+        Random rnd = new Random(); 
+        Player play1 = new Player();
 
-        /*for (Card li : card_list) {
-            String x = li.getMark();
-            int y = li.getNum();
-            System.out.println(x + y);
-        }*/
+        System.out.println("ゲームスタート");
+        deck.makeDeck();
+
+
+        for(int i = 0;i < 2; i++){
+            int a = rnd.nextInt(52);
+            play1.getCard(deck.getCard(a));
+        }
+        System.out.println("プレイヤーのカードは");
+        for(int i = 0; i<play1.getSize(); i++){
+            play1.checkCard(i);
+        }
 
     }
 }
